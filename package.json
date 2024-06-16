@@ -6,12 +6,14 @@
   "author": "Maximilian Schwarzmüller / Academind GmbH",
   "license": "ISC",
   "scripts": {
-    "start": "docker run -p 80:80 -d --name feedback-container --rm  0b13fc83ec43f398fed17505cddf64d7ab3e21ed2061e9afc4dcceb7897de87f",
+    "start": "nodemon server.js",
+    "start:docker": "docker run -p 80:80 -d --name feedback-container --rm  0b13fc83ec43f398fed17505cddf64d7ab3e21ed2061e9afc4dcceb7897de87f",
     "volume": "docker run -d -p 80:80 --rm --name feedback-app -v feedback:/app/feedback  feedback-node:volumes"
   
   },
   "dependencies": {
     "body-parser": "^1.19.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "nodemon": "2.0.4"
   }
 }
