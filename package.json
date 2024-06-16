@@ -8,7 +8,8 @@
   "scripts": {
     "start": "nodemon server.js",
     "start:docker": "docker run -p 80:80 -d --name feedback-container --rm  0b13fc83ec43f398fed17505cddf64d7ab3e21ed2061e9afc4dcceb7897de87f",
-    "volume": "docker run -d -p 80:80 --rm --name feedback-app -v feedback:/app/feedback  feedback-node:volumes"
+    "volume": "docker run -d -p 80:80 --rm --name feedback-app -v feedback:/app/feedback  feedback-node:volumes",
+    "bind:volume": "docker run -d -p 80:80 --rm --name feedback-app   -v feedback:/app/feedback -v '/Users/gujejiani/Desktop/nodejs-app-starting-setup:/app' -v /app/node_modules  feedback-node:volumes"
   
   },
   "dependencies": {
