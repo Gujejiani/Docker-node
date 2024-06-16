@@ -5,6 +5,10 @@
   "main": "server.js",
   "author": "Maximilian Schwarzmüller / Academind GmbH",
   "license": "ISC",
+  "scripts": {
+    "start": "docker run -p 80:80 -d --name feedback-container --rm  0b13fc83ec43f398fed17505cddf64d7ab3e21ed2061e9afc4dcceb7897de87f"
+  
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1"
