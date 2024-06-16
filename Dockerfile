@@ -9,6 +9,7 @@ RUN npm install
 
 COPY . /app
 
+# VOLUME [ "/app/node_modules" ]
 
 EXPOSE 80
 
