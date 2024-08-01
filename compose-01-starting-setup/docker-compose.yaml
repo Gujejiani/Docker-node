@@ -1,0 +1,20 @@
+version: '3.8'
+
+services: 
+  mongodb: 
+     image: 'mongo'
+     volumes:
+        - 'data:/data/db'
+    #  environment: 
+        # MONGO_INITDB_ROOT_USERNAME: 'root'
+        # MONGO_INITDB_ROOT_PASSWORD: 'rootpassword'
+     env_file: 
+        - ./env/mongo.env
+     
+  backend: 
+
+  frontend: 
+  # named volumes
+  volumes: 
+    data:
+# dokcer will create network for services provided in docker-compose.yaml
