@@ -1,6 +1,7 @@
 
 FROM node
-
+# import mongo
+# FROM mongo
 WORKDIR /app
 
 COPY package.json /app
