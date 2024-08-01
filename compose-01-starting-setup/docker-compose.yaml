@@ -2,19 +2,44 @@ version: '3.8'
 
 services: 
   mongodb: 
-     image: 'mongo'
-     volumes:
-        - 'data:/data/db'
-    #  environment: 
-        # MONGO_INITDB_ROOT_USERNAME: 'root'
-        # MONGO_INITDB_ROOT_PASSWORD: 'rootpassword'
-     env_file: 
-        - ./env/mongo.env
+    image: 'mongo'
+    volumes:
+      - 'data:/data/db'
+    env_file: 
+      - ./env/mongo.env
+    # Uncomment the following if you prefer setting environment variables here
+    # environment: 
+    #   MONGO_INITDB_ROOT_USERNAME: 'root'
+    #   MONGO_INITDB_ROOT_PASSWORD: 'rootpassword'
      
   backend: 
-
+    build: './backend'
+    ports:
+      - '80:80'
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app
+      - /app/node_modules
+    env_file: 
+      - ./env/backend.env
+    depends_on:
+      - mongodb
   frontend: 
-  # named volumes
-  volumes: 
-    data:
-# dokcer will create network for services provided in docker-compose.yaml
+    build: './frontend'
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend/src:/app
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
+   
+
+# Named volumes
+volumes: 
+  data:
+  logs:
+
+
+    # Configuration for the volume (e.g., driver, options) can go here
